@@ -38,15 +38,15 @@ class Random2DGaussian:
         return sample
 
 
-def sample_gauss_2d(C, N):
-    X = []
-    Y = []
+    def sample_gauss_2d(self, C, N):
+        X = []
+        Y = []
 
-    for distr in range(C):
-        X.extend(Random2DGaussian().get_sample(N))
-        Y.extend([distr]*N)
-    
-    return np.array(X), np.array(Y)
+        for distr in range(C):
+            X.extend(self.get_sample(N))
+            Y.extend([distr]*N)
+        
+        return np.array(X), np.array(Y)
 
 
 if __name__ == "__main__":
