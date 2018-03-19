@@ -13,8 +13,6 @@ class Random2DGaussian:
 
         self.distribution_variance = 5
 
-        np.random.seed(100)
-
     def get_sample(self, sample_count):
         distribution_mean = np.random.random_sample(2) * (self.maxx, self.maxy) # considering mins are 0
 
@@ -38,6 +36,17 @@ class Random2DGaussian:
         sample = np.random.multivariate_normal(distribution_mean, sigma_matrix, sample_count)
 
         return sample
+
+
+def sample_gauss_2d(C, N):
+    X = []
+    Y = []
+
+    for distr in range(C):
+        X.extend(Random2DGaussian().get_sample(N))
+        Y.extend([distr]*N)
+    
+    return np.array(X), np.array(Y)
 
 
 if __name__ == "__main__":
